@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Nav, Button } from "react-bootstrap";
-import { House, Book, ChatDots, BarChart, Folder, Envelope, Gear, List } from "react-bootstrap-icons";
+import { House, Book, ChatDots, BarChart, Folder, 
+  // Envelope, Gear, 
+List } from "react-bootstrap-icons";
 import { NavLink } from "react-router-dom";
 
 const sidebarLinks = [

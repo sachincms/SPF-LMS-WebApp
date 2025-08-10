@@ -1,4 +1,3 @@
-import React from "react";
 import { useNavigate } from "react-router-dom";
 
 // Example SVGs for icons (replace with your own or use react-icons/bootstrap-icons if preferred)

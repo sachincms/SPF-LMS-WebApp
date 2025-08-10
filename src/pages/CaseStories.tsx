@@ -1,8 +1,14 @@
 import React, { useState } from "react";
 import ReactMarkdown from "react-markdown";
 
-// Structured sample case stories for easy lookup
-const sampleCaseStories = {
+
+const sampleCaseStories: {
+  [section: string]: {
+    [phaseOrOrg: string]: {
+      [org: string]: string;
+    } | { [org: string]: string } | string;
+  };
+} = {
   "Outcome Journals": {
     "Phase 1 Journal": {
       "Pratham": `
@@ -82,9 +88,18 @@ const CaseStories: React.FC = () => {
   // Get the current case story to display
   let caseStory = "";
   if (option === "Outcome Journals") {
-    caseStory = sampleCaseStories["Outcome Journals"][dropdown1]?.[dropdown2] || "";
+    const phaseObj = sampleCaseStories["Outcome Journals"][dropdown1];
+    if (phaseObj && typeof phaseObj === "object") {
+      const story = phaseObj[dropdown2];
+      if (typeof story === "string") {
+        caseStory = story;
+      }
+    }
   } else if (option === "Progress Report Partners") {
-    caseStory = sampleCaseStories["Progress Report Partners"][dropdown2] || "";
+    const story = sampleCaseStories["Progress Report Partners"][dropdown2];
+    if (typeof story === "string") {
+      caseStory = story;
+    }
   }
 
   // Handle radio change

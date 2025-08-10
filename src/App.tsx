@@ -1,5 +1,8 @@
 import { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, 
+  // Navigate 
+} 
+from 'react-router-dom';
 import SideBar from './components/SideBar';
 import Login from './pages/Login';
 import Landing from './pages/Landing';
@@ -7,8 +10,8 @@ import CaseStories from './pages/CaseStories';
 import Chatbot from './pages/Chatbot';
 import ProgressDashboard from './pages/ProgressDashboard';
 import Resources from './pages/Resources';
-import Contact from './pages/Contact';
-import AdminPanel from './pages/AdminPanel';
+// import Contact from './pages/Contact';
+// import AdminPanel from './pages/AdminPanel';
 import './App.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
