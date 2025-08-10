@@ -62,7 +62,7 @@ function Landing() {
             alignItems: "center"
           }}>
             <img
-              src="src\assets\learning-illustration.png"
+              src="src/assets/learning-illustration.png"
               alt="Learning Illustration"
               style={{ width: "100%", maxWidth: 220, marginBottom: "1.2rem" }}
             />
