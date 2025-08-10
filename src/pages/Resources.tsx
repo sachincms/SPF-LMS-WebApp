@@ -1,10 +1,15 @@
 import ResourceCard from "../components/ResourceCard";
 import outcomeMappingGuide from "../assets/SPF_Resources/final_MEL Foundational Training/Outcome Mapping Guide_English.pdf";
-import session1MELFundamentals from "../assets/SPF_Resources/final_MEL Foundational Training/Session 1_ MEL Fundamentals-I.pptx";
-import session2MELFundamentals from "../assets/SPF_Resources/final_MEL Foundational Training/Session 2_MEL Fundamentals-II.pptx";
-import session3OutcomeMapping from "../assets/SPF_Resources/final_MEL Foundational Training/Session 3_Outcome Mapping and Indicator Development-I.pptx";
-import handoutOutcomeHarvesting from "../assets/SPF_Resources/final_Outcome Harvesting/Handout-Outcome Harvesting.docx";
-import outcomeHarvestingWorkshopDeck from "../assets/SPF_Resources/final_Outcome Harvesting/OH Workshop_Deck.pptx";
+// import session1MELFundamentals from "../assets/SPF_Resources/final_MEL Foundational Training/Session 1_ MEL Fundamentals-I.pptx";
+// import session2MELFundamentals from "../assets/SPF_Resources/final_MEL Foundational Training/Session 2_MEL Fundamentals-II.pptx";
+// import session3OutcomeMapping from "../assets/SPF_Resources/final_MEL Foundational Training/Session 3_Outcome Mapping and Indicator Development-I.pptx";
+// import handoutOutcomeHarvesting from "../assets/SPF_Resources/final_Outcome Harvesting/Handout-Outcome Harvesting.docx";
+// import outcomeHarvestingWorkshopDeck from "../assets/SPF_Resources/final_Outcome Harvesting/OH Workshop_Deck.pptx";
+import session1MELFundamentals from "../assets/SPF_Resources/final_MEL Foundational Training/Outcome Mapping Guide_English.pdf";
+import session2MELFundamentals from "../assets/SPF_Resources/final_MEL Foundational Training/Outcome Mapping Guide_English.pdf";
+import session3OutcomeMapping from "../assets/SPF_Resources/final_MEL Foundational Training/Outcome Mapping Guide_English.pdf";
+import handoutOutcomeHarvesting from "../assets/SPF_Resources/final_MEL Foundational Training/Outcome Mapping Guide_English.pdf";
+import outcomeHarvestingWorkshopDeck from "../assets/SPF_Resources/final_MEL Foundational Training/Outcome Mapping Guide_English.pdf";
 
 
 function Resources() {
