@@ -1,3 +1,4 @@
+import learningIllustration from "../assets/learning-illustration.png";
 
 const icons = {
   book: (
@@ -62,7 +63,7 @@ function Landing() {
             alignItems: "center"
           }}>
             <img
-              src="src\assets\learning-illustration.png"
+              src={learningIllustration}
               alt="Learning Illustration"
               style={{ width: "100%", maxWidth: 220, marginBottom: "1.2rem" }}
             />

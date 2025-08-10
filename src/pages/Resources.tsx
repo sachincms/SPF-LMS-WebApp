@@ -1,4 +1,11 @@
 import ResourceCard from "../components/ResourceCard";
+import outcomeMappingGuide from "../assets/SPF_Resources/final_MEL Foundational Training/Outcome Mapping Guide_English.pdf";
+import session1MELFundamentals from "../assets/SPF_Resources/final_MEL Foundational Training/Session 1_ MEL Fundamentals-I.pptx";
+import session2MELFundamentals from "../assets/SPF_Resources/final_MEL Foundational Training/Session 2_MEL Fundamentals-II.pptx";
+import session3OutcomeMapping from "../assets/SPF_Resources/final_MEL Foundational Training/Session 3_Outcome Mapping and Indicator Development-I.pptx";
+import handoutOutcomeHarvesting from "../assets/SPF_Resources/final_Outcome Harvesting/Handout-Outcome Harvesting.docx";
+import outcomeHarvestingWorkshopDeck from "../assets/SPF_Resources/final_Outcome Harvesting/OH Workshop_Deck.pptx";
+
 
 function Resources() {
     return (
@@ -15,39 +22,39 @@ function Resources() {
                 title="Outcome Mapping Guide_English"
                 fileType="pdf"
                 description="Building Learning and Reflection into Development Programs"
-                url="src/assets/SPF_Resources/final_MEL Foundational Training/Outcome Mapping Guide_English.pdf"
+                url={outcomeMappingGuide}
             />
             <ResourceCard
                 title="Session 1 MEL Fundamentals-I"
                 fileType="ppt"
                 description="Introduction to MEL Concepts"
-                url="src\assets\SPF_Resources\final_MEL Foundational Training\Session 1_ MEL Fundamentals-I.pptx"
+                url={session1MELFundamentals}
             />
             <ResourceCard
                 title="Session 2 MEL Fundamentals-II"
                 fileType="ppt"
                 description="Introduction to MEL Concepts"
-                url="src\assets\SPF_Resources\final_MEL Foundational Training\Session 2_MEL Fundamentals-II.pptx"
+                url={session2MELFundamentals}
             />
             <ResourceCard
                 title="Session 3 Outcome Mapping and Indicator Development-I"
                 fileType="ppt"
                 description="Learn about the background and key issues to identify the right kind of outcomes."
-                url="src\assets\SPF_Resources\final_MEL Foundational Training\Session 3_Outcome Mapping and Indicator Development-I.pptx"
+                url={session3OutcomeMapping}
             />
 
             <ResourceCard
                 title="Handout-Outcome Harvesting"
                 fileType="doc"
                 description="Learn about the concept of Outcome Harvesting."
-                url="src\assets\SPF_Resources\final_Outcome Harvesting\Handout-Outcome Harvesting.docx"
+                url={handoutOutcomeHarvesting}
             />
 
             <ResourceCard
                 title="Outcome Harvesting Workshop Deck"
                 fileType="ppt"
                 description="Learn about the concept of Outcome Harvesting."
-                url="src\assets\SPF_Resources\final_Outcome Harvesting\OH Workshop_Deck.pptx"
+                url={outcomeHarvestingWorkshopDeck}
             />
         </div>
     );
