@@ -1,7 +1,7 @@
 import React from "react";
 
 // Icon SVGs for file types
-const fileIcons: Record<string, JSX.Element> = {
+const fileIcons: Record<string, React.JSX.Element> = {
   pdf: (
     <svg width="36" height="36" viewBox="0 0 24 24" fill="#E63946">
       <path d="M6 2a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8.828A2 2 0 0 0 19.414 7.414l-4.828-4.828A2 2 0 0 0 12.172 2H6zm6 1.414L18.586 10H14a2 2 0 0 1-2-2V3.414z"/>
