@@ -5,4 +5,4 @@ export const BackgroundCardColor =
   "rgba(255,255,255,0.95)";
 
 
-export const PowerBIDashboardURL = "https://app.powerbi.com/view?r=eyJrIjoiZjA4MjBiOGItNDY0OC00NTJlLTgxNTUtNWQ3N2YwNGI3YTljIiwidCI6Ijc5NWZhNzgwLTdjZTktNDZmZS04MDk4LTY1YzJiN2UzYzg0MSJ9";
+export const PowerBIDashboardURL = "https://app.powerbi.com/view?r=eyJrIjoiNzg1OTFhZDEtZmQ2Ni00ODdjLWIwMzgtNWRiY2FhNThhNmU3IiwidCI6Ijc5NWZhNzgwLTdjZTktNDZmZS04MDk4LTY1YzJiN2UzYzg0MSJ9";
