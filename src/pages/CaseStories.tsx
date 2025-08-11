@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import ReactMarkdown from "react-markdown";
 
 
@@ -73,13 +73,70 @@ const progressPartnersDropdowns = {
   org: ["Sign of Hope"]
 };
 
+const TYPING_SPEED = 18; // ms per character
+const THINKING_TIME = 1200; // ms before typing starts
+
+
+interface Message {
+  from: "user" | "bot";
+  text: string;
+}
+
+
 const CaseStories: React.FC = () => {
   // Filter state
   const [option, setOption] = useState<"Outcome Journals" | "Progress Report Partners">("Outcome Journals");
   const [dropdown1, setDropdown1] = useState("Phase 1 Journal");
   const [dropdown2, setDropdown2] = useState("Pratham");
+  const [input, setInput] = useState("");
+  const [isThinking, setIsThinking] = useState(false);
+  const [typingMessage, setTypingMessage] = useState<string | null>(null);
+  const [messages, setMessages] = useState<Message[]>([]);
+  const typingTimeout = useRef<NodeJS.Timeout | null>(null);
 
-  // Get dropdown options based on radio selection
+  const handleSend = (e: React.FormEvent) => {
+      e.preventDefault();
+      if (!input.trim() || isThinking || typingMessage) return;
+      handleUserMessage(input);
+      setInput("");
+    };
+  
+    const handleUserMessage = (userInput: string) => {
+      setMessages(prev => [...prev, { from: "user", text: userInput }]);
+      setIsThinking(true);
+
+      const botResponse = "I'm just a demo bot. You said: " + userInput;
+
+      // Show spinner for a while, then type out the response
+      setTimeout(() => {
+        setIsThinking(false);
+        typeBotResponse(botResponse);
+      }, THINKING_TIME);
+    };
+
+    const typeBotResponse = (fullText: string) => {
+    setTypingMessage("");
+    let i = 0;
+    function typeNext() {
+      setTypingMessage(fullText.slice(0, i + 1));
+      i++;
+      if (i < fullText.length) {
+        typingTimeout.current = setTimeout(typeNext, TYPING_SPEED);
+      } else {
+        setMessages(prev => [...prev, { from: "bot", text: fullText }]);
+        setTypingMessage(null);
+      }
+    }
+    typeNext();
+  };
+
+  React.useEffect(() => {
+      return () => {
+        if (typingTimeout.current) clearTimeout(typingTimeout.current);
+      };
+    }, []);
+
+
   const phaseOptions = outcomeJournalsDropdowns.phase;
   const orgOptions = option === "Outcome Journals"
     ? outcomeJournalsDropdowns.org
@@ -336,13 +393,156 @@ const CaseStories: React.FC = () => {
             )}
           </div>
 
+          {(messages.length > 0 || isThinking || typingMessage) && (
+  <div
+    style={{
+      background: "#fff",
+      borderRadius: "1rem",
+      padding: "1.5rem",
+      marginBottom: "2rem",
+      width: "100%",
+      maxWidth: 900,
+      boxShadow: "0 2px 8px rgba(2,62,138,0.08)",
+      border: "1px solid #e3e6f0",
+      maxHeight: "400px",
+      overflowY: "auto"
+    }}
+  >
+    <h4 style={{ 
+      color: "#03045E", 
+      fontWeight: 600, 
+      marginBottom: "1rem",
+      fontSize: "1.1rem"
+    }}>
+      Chat with Case Story
+    </h4>
+    
+    {/* Display previous messages */}
+    {messages.map((message, index) => (
+      <div
+        key={index}
+        style={{
+          marginBottom: "1rem",
+          display: "flex",
+          justifyContent: message.from === "user" ? "flex-end" : "flex-start"
+        }}
+      >
+        <div
+          style={{
+            background: message.from === "user" ? "#03045E" : "#f8fafc",
+            color: message.from === "user" ? "#fff" : "#212529",
+            padding: "0.75rem 1rem",
+            borderRadius: message.from === "user" ? "1rem 1rem 0.25rem 1rem" : "1rem 1rem 1rem 0.25rem",
+            maxWidth: "75%",
+            fontSize: "0.95rem",
+            lineHeight: 1.4,
+            border: message.from === "bot" ? "1px solid #e3e6f0" : "none"
+          }}
+        >
+          {message.text}
+        </div>
+      </div>
+    ))}
+    
+    {/* Thinking indicator */}
+    {isThinking && (
+      <div style={{ display: "flex", justifyContent: "flex-start", marginBottom: "1rem" }}>
+        <div
+          style={{
+            background: "#f8fafc",
+            color: "#6c757d",
+            padding: "0.75rem 1rem",
+            borderRadius: "1rem 1rem 1rem 0.25rem",
+            border: "1px solid #e3e6f0",
+            fontSize: "0.95rem",
+            display: "flex",
+            alignItems: "center",
+            gap: "0.5rem"
+          }}
+        >
+          <div
+            style={{
+              display: "inline-flex",
+              gap: "0.25rem"
+            }}
+          >
+            <div
+              style={{
+                width: "6px",
+                height: "6px",
+                borderRadius: "50%",
+                background: "#6c757d",
+                animation: "bounce 1.4s ease-in-out infinite both",
+                animationDelay: "0s"
+              }}
+            />
+            <div
+              style={{
+                width: "6px",
+                height: "6px",
+                borderRadius: "50%",
+                background: "#6c757d",
+                animation: "bounce 1.4s ease-in-out infinite both",
+                animationDelay: "0.2s"
+              }}
+            />
+            <div
+              style={{
+                width: "6px",
+                height: "6px",
+                borderRadius: "50%",
+                background: "#6c757d",
+                animation: "bounce 1.4s ease-in-out infinite both",
+                animationDelay: "0.4s"
+              }}
+            />
+          </div>
+          Thinking...
+        </div>
+      </div>
+    )}
+    
+    {/* Typing message */}
+    {typingMessage && (
+      <div style={{ display: "flex", justifyContent: "flex-start", marginBottom: "1rem" }}>
+        <div
+          style={{
+            background: "#f8fafc",
+            color: "#212529",
+            padding: "0.75rem 1rem",
+            borderRadius: "1rem 1rem 1rem 0.25rem",
+            maxWidth: "75%",
+            fontSize: "0.95rem",
+            lineHeight: 1.4,
+            border: "1px solid #e3e6f0"
+          }}
+        >
+          {typingMessage}
+          <span
+            style={{
+              display: "inline-block",
+              width: "2px",
+              height: "1em",
+              background: "#03045E",
+              marginLeft: "2px",
+              animation: "blink 1s infinite"
+            }}
+          />
+        </div>
+      </div>
+    )}
+  </div>
+)}
+
           <form 
-            // onSubmit={handleSend} 
+            onSubmit={handleSend} 
             style={{ display: "flex", gap: 8, width: "100%", maxWidth: 900 }}
           >
             <input
               type="text"
               placeholder="Type your message..."
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
               style={{
                 flex: 1,
                 border: "1px solid #e3e6f0",
